@@ -5,10 +5,11 @@ using UnityEngine;
 public class BulbController : MonoBehaviour
 {
     // switchOff reflects whether the switch is on ot off
-    public bool switchOff = true;
+    
 
     // switchAnimator will hold the gameobjects Animator
     public Animator bulbAnimator;
+    public bool bulbOn;
 
     void Awake()
     {
@@ -19,13 +20,13 @@ public class BulbController : MonoBehaviour
 
     public void turnOn()
     {
-        switchOff = false;
-        bulbAnimator.SetBool("BulbOff", switchOff);
+        bulbAnimator.SetBool("On", true);
+        bulbOn = true;
     }
 
     public void turnOff()
     {
-        switchOff = true;
-        bulbAnimator.SetBool("BulbOff", switchOff);
+        bulbAnimator.SetBool("On", false);
+        bulbOn = false;
     }
 }

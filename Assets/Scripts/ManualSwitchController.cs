@@ -25,6 +25,8 @@ public class ManualSwitchController : MonoBehaviour
 
     // switchAnimator will hold the gameobjects Animator
     private Animator switchAnimator;
+
+
     BulbController theBulbController;
 
     // The Awake function of each class is called before the Start function. It is
@@ -41,17 +43,11 @@ public class ManualSwitchController : MonoBehaviour
         {
             theBulbController = theBulb.GetComponent<BulbController>();
         }
-
-        // Let's turn off the switch to start with
-        turnOff();
     }
 
-    void Update()
+    void Start()
     {
-        if (Input.GetKeyDown(KeyCode.Space) == true)
-        {
-            toggleSwitch();
-        }
+        turnOff();
     }
 
     public void turnOn()
@@ -66,7 +62,7 @@ public class ManualSwitchController : MonoBehaviour
     {
         switchOff = true;
         switchAnimator.SetBool("SwitchOff", switchOff);
-        theBulbController.turnOf();
+        theBulbController.turnOff();
     }
 
     public void enableSwitch()
@@ -81,16 +77,35 @@ public class ManualSwitchController : MonoBehaviour
 
     // The following function will toggle the switch but only if the 
     // switch is enabled
-    public void toggleSwitch()
+    public bool toggleSwitch()
     {
         if (switchEnabled == true)
         {
-            switchOff = !switchOff;
-            switchAnimator.SetBool("SwitchOff", switchOff);
+            if (switchOff == true)
+            {
+                turnOn();
+            }
+            else
+            {
+                turnOff();
+            }
+
+            // returns true so that the code tha called this function knows
+            // that the toggle worked
+            return true;
         }
         else
         {
             Debug.Log("Can't toggle switch as it's not enabled");
+            return false;
+        }
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) == true)
+        {
+            toggleSwitch();
         }
     }
 

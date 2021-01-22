@@ -1393,9 +1393,19 @@ PrefabInstance:
       propertyPath: bulbAnimator
       value: 
       objectReference: {fileID: 1130157379}
+    - target: {fileID: 9046979099485958469, guid: 6602498626f604f49ba8f1214715f52c,
+        type: 3}
+      propertyPath: bulbOn
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9046979099485958489, guid: 6602498626f604f49ba8f1214715f52c,
         type: 3}
       propertyPath: m_Name
+      value: Bulb
+      objectReference: {fileID: 0}
+    - target: {fileID: 9046979099485958489, guid: 6602498626f604f49ba8f1214715f52c,
+        type: 3}
+      propertyPath: m_TagString
       value: Bulb
       objectReference: {fileID: 0}
     - target: {fileID: 9046979099485958490, guid: 6602498626f604f49ba8f1214715f52c,

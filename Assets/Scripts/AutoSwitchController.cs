@@ -17,23 +17,38 @@ public class AutoSwitchController : MonoBehaviour
     // switchAnimator will hold the gameobjects Animator
     private Animator switchAnimator;
 
+    BulbController theBulbController;
+
     void Awake()
     {
        
         switchAnimator = gameObject.GetComponent<Animator>();
-        turnOff();
+        GameObject theBulb = GameObject.FindGameObjectWithTag("Bulb");
+
+        if (theBulb != null)
+        {
+            theBulbController = theBulb.GetComponent<BulbController>();
+        }
     }
 
+    void Start()
+    {
+        turnOff();
+
+    }
     public void turnOn()
     {
         switchOff = false;
         switchAnimator.SetBool("SwitchOff", switchOff);
+        theBulbController.turnOn();
     }
 
     public void turnOff()
     {
         switchOff = true;
         switchAnimator.SetBool("SwitchOff", switchOff);
+
+        theBulbController.turnOff();
     }
 
     void OnTriggerEnter2D(Collider2D other)
